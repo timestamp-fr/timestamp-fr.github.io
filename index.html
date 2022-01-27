@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+    <fieldset>
+        <legend>le timestamp c'est quoi ?</legend>
+        Le timestamp (unix) désigne le nombre de secondes écoulées depuis le 1<sup>er</sup> janvier 1970 à minuit UTC précise.
+        Les avantages sont multiples :
+        <ul>
+            <li>facilite la comparaison de date, puisque ca reviens a faire une differente entre 2 nombres</li>
+            <li>gérer par la plupars des langage et SGBD</li>
+            <li>universel, puisque pas de notion de fuseaux horaire</li>
+        </ul>
+        quelques inconvenients :
+        <ul>
+            <li>le nombre en lui même n'est pas parlant pour un humain, obligé de passer par un convertisseur</li>
+            <li>ne gère pas (nativement) avant 1970, donc pour gerer les dates de naissances par exemple, ce n'est pas l'idéal</li>
+        </ul>
+        par exemple, actuellement, en timestamp, il est : <span id="browserTime"></span> ( heure du navigateur )
+    </fieldset>
+    <fieldset>
+        <legend>convertisseur timestamp vers date</legend>
+        <form action="?" method="POST">
+            timestamp à convertir : <input type="text" name="timestamp" id="timestamp">
+            <br>
+            résultat : le <span id="dateNow"></span><br>
+            <input type="submit" name="submit" value="convertir timestamp en date" id="timestampToDate">
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>convertisseur date vers timestamp</legend>
+        <form action="?">
+            <input type="hidden" name="action" value="date2timestamp">
+            date a convertir (année - mois - jour - heure - minute - seconde):<br>
+            <select name="annee" id="annee"></select>
+            <select name="mois" id="mois"></select>
+            <select name="jour" id="jour"></select>
+            <select name="heure" id="heure"></select>
+            <select name="minute" id="minute"></select>
+            <select name="seconde" id="seconde"></select>
+            <br>
+            résultat : <span id="timestamp2">1516371648</span>			<br>
+            <input type="submit" name="submit" value="convertir date en timestamp" id="dateToTimestamp">
+        </form>
+    </fieldset>
+    <script src="app.js"></script>
+    </body>
+</html>
