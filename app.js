@@ -2,7 +2,9 @@ const date = new Date();
 const tsNow = Math.floor(Date.now() / 1000);
 
 const tsInput = document.getElementById('timestamp');
+const timestamp2 = document.getElementById('timestamp2');
 tsInput.value = tsNow;
+timestamp2.innerText = tsNow;
 
 const dateNow = document.getElementById('dateNow');
 dateNow.innerText = date.toLocaleString('fr-FR', {timeZone: 'Europe/Paris'});
@@ -89,7 +91,7 @@ for (let second = 0; second < 60; second++) {
     secondsSelect.add(opt, null);
 }
 
-const timestamp2 = document.getElementById('timestamp2');
+
 
 document.getElementById('dateToTimestamp').addEventListener('click', function(e) {
     e.preventDefault();
