@@ -9,6 +9,10 @@ dateNow.innerText = date.toLocaleString('fr-FR', {timeZone: 'Europe/Paris'});
 
 const browserTime = document.getElementById('browserTime');
 browserTime.innerText = date.toLocaleTimeString('fr-FR', {timeZone: 'Europe/Paris'});
+setInterval(function() {
+    const date = new Date();
+    browserTime.innerText = date.toLocaleTimeString('fr-FR', {timeZone: 'Europe/Paris'});
+}, 1000);
 
 const yearSelect = document.getElementById('annee')
 for(let year = date.getFullYear() + 2; year >= 1900 ; year--) {
@@ -19,27 +23,26 @@ for(let year = date.getFullYear() + 2; year >= 1900 ; year--) {
     yearSelect.add(opt, null);
 }
 
-const months = {
-    0: "Janvier",
-    1: "Février",
-    2: "Mars",
-    3: "Avril",
-    4: "Mai",
-    5: "Juin",
-    6: "Juillet",
-    7: "Aout",
-    8: "Septembre",
-    9: "Octobre",
-    10: "Novembre",
-    11: "Décembre",
-};
+const months = [
+    'Janvier',
+    'Février',
+    'Mars',
+    'Avril',
+    'Mai',
+    'Juin',
+    'Juillet',
+    'Aout',
+    'Septembre',
+    'Octobre',
+    'Novembre',
+    'Décembre'
+];
 
 const monthSelect = document.getElementById('mois');
-Object.keys(months).forEach(k => {
-    k = parseInt(k);
+months.forEach((m, k) => {
     const opt = document.createElement('option');
     opt.value = k;
-    opt.innerText = (k + 1) + " - " + months[k];
+    opt.innerText = (k < 9 ? '0' : '') + (k + 1) + ' - ' + m;
     if (date.getMonth() === k) {
         opt.selected = true;
     }
